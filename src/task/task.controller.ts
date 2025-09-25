@@ -4,11 +4,7 @@ import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 
 @Controller('task')
-// class -  გეგმა, blueprint
-// object -  კონკრეტული მაგალითი  
-//constructor =  ქარხანა რომელიც ამ კონკრეტულ მაგალითს აწყობს
 export class TaskController {
-
   constructor(private readonly taskService: TaskService) {}
 
   @Post()
