@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
-// Async function რომელიც NestJS აპლიკაციას ქმნის და ეშვება 
+// Async function რომელიც NestJS აპლიკაციას ქმნის და ეშვება
 async function bootstrap() {
   // NestFactory-ით NestJS application instance-ის შექმნა AppModule-ის საფუძველზე
   const app = await NestFactory.create(AppModule);
