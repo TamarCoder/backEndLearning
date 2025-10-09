@@ -6,18 +6,21 @@ import { Product } from './entities/product.entity';
 @Injectable()
 export class ProductsService {
   products: Product[] = [];
-  private _createProductDto: CreateProductDto;
-
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   create(data: any) {
     const newProduct = new Product();
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
     newProduct.name = data.name;
     newProduct.size  = data.size;
+    newProduct.price = data.price;
+    newProduct.brand = data.brand;
+    
+    this.products.push(newProduct);
+    return newProduct;
   }
 
   findAll() {
-    return `This action returns all products`;
+    return this.products;
   }
 
   findOne(id: number) {
