@@ -1,5 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { ProductsService } from './products.service';
+import { CreateProductDto } from './dto/create-product.dto';
+import { UpdateProductDto } from './dto/update-product.dto';
 
 
 @Controller('products')
@@ -7,16 +9,9 @@ export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
   @Post()
-  create(
-     @Body('color') color: string,
-     @Body('size') size : string,
-     @Body('brand') brand: string,
-     @Body('category')category:string,
-     @Body('price') price:number,
-     @Body('title') title:string
-     ){
-    return `დამატებულია ყველა პროდუქტი პარამეტრებით: ${color} , ${size}, ${brand} , ${category}, ${price} , ${title}`;
-
+  // ქრიეით მეთოდი გაეშვას მაშინ როცა პოსტ მეთოდით მოგვმართავს,
+  create(@Body() data: CreateProductDto){
+    return data;
   }
 
   @Get()
@@ -35,15 +30,9 @@ export class ProductsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string,
-         @Body('color') color: string,
-         @Body('size') size : string,
-         @Body('brand') brand: string,
-         @Body('category')category:string,
-         @Body('price') price:number,
-         @Body('title') title:string)
+  update(@Param('id') id: string, @Body() data: UpdateProductDto)
   {
-    return `განახლებულია ${id} პროდუქტი ,   პარამეტრებით: ${color} , ${size}, ${brand} , ${category}, ${price} , ${title}`;
+    // return `განახლებულია ${id} პროდუქტი ,   პარამეტრებით: ${color} , ${size}, ${brand} , ${category}, ${price} , ${title}`;
   }
 
   @Delete(':id')
